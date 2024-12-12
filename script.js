@@ -25,15 +25,21 @@ let plannerList = [
     },
 ]
 
-// MARK: home/this mth pg
+function resetModalFields() {
+    document.querySelector("#eventName").value = "";
+    document.querySelector("#newEventDate").value = "";
+    document.querySelector("#newCategory").value = "";
+    document.querySelector("#newEventAddress").value = "";
+    document.querySelector("#newEventNotes").value = "";
+}
+
+// MARK: home pg
 window.addEventListener("DOMContentLoaded", function () {
     renderEvents();
 
     let newEventBtn = document.querySelectorAll(".newEventBtn");
-
     newEventBtn.forEach(function (btn) {
         btn.addEventListener("click", function () {
-
             let eventName = document.querySelector("#eventName").value;
             let eventDate = document.querySelector("#newEventDate").value;
             let eventCat = document.querySelector("#newCategory").value;
@@ -42,12 +48,13 @@ window.addEventListener("DOMContentLoaded", function () {
 
             addEvent(plannerList, eventName, eventDate, eventCat, eventAddress, eventNotes);
 
-            // Reset input fields after submission
-            document.querySelector("#eventName").value = "";
-            document.querySelector("#newEventDate").value = "";
-            document.querySelector("#newCategory").value = "";
-            document.querySelector("#newEventAddress").value = "";
-            document.querySelector("#newEventNotes").value = "";
+            resetModalFields();
+
+            const modal = bootstrap.Modal.getInstance(document.querySelector("#eventModal"));
+            modal.hide();
+
+            renderEvents();
+
         });
     });
 });
@@ -61,24 +68,28 @@ function addEvent(plannerList, eventName, eventDate, eventCat, eventAddress, eve
         "category": eventCat,
         "address": eventAddress,
         "notes": eventNotes
-    }
+    };
+    console.log("New Event Added:", newEvent);
     plannerList.push(newEvent);
-    renderEvents(plannerList);
+    renderEvents();
 }
 
 // MARK: read
 function renderEvents() {
-    plannerList.sort(function(a, b) {
-        return new Date(a.date) - new Date(b.date); 
+    plannerList.sort(function (a, b) {
+        return new Date(a.date) - new Date(b.date);
     });
 
     let allEvents = document.querySelector(".allEvents");
     allEvents.innerHTML = "";
+    const todayDate = new Date().toISOString().split("T")[0];
 
     for (let plan of plannerList) {
+        const isPastEvent = new Date(plan.date) < new Date(todayDate);
+
         const html = `
             <div class="col-8 col-md-4">
-                <div class="card">
+                <div class="card ${isPastEvent ? "finished-event" : ""}">
                     <div class="card-header headerInfo d-flex justify-content-center">
                         <h3 class="eventDate">${plan.date}</h3>
                         <button type="button" class="btn btn-danger delBtn" data-id="${plan.id}">Delete</button>
@@ -118,26 +129,12 @@ function renderEvents() {
 
 // MARK: set up save, del, go to map btns
 function attachEventListeners() {
-    
+
     // Go to map event listener
     const goToMapBtns = document.querySelectorAll(".goToMapBtn");
     goToMapBtns.forEach(function (btn) {
-        btn.addEventListener("click", function() {
-            window.location.href = "map.html";
-        });
-    });
-
-    // Delete button event listener
-    const deleteBtns = document.querySelectorAll(".delBtn");
-    deleteBtns.forEach(function (btn) {
-        console.log("clicked.") // check functionality, del later
         btn.addEventListener("click", function () {
-            const eventId = parseInt(btn.getAttribute("data-id"));
-            const reallyDelete = confirm("Are you sure you want to delete?");
-            if (reallyDelete) {
-                deleteEvent(eventId);
-                renderEvents();
-            }
+            window.location.href = "map.html";
         });
     });
 
@@ -151,13 +148,29 @@ function attachEventListeners() {
             const eventCard = btn.closest(".card");
 
             const newEventName = eventCard.querySelector(".eventName").value;
+            const newDate = eventCard.querySelector(".eventDate").innerText;
             const newCategory = eventCard.querySelector(".category").value;
             const newAddress = eventCard.querySelector(".eventAddress").value;
             const newNotes = eventCard.querySelector(".eventNotes").value;
-            const newDate = eventCard.querySelector(".eventDate").textContent;
 
             updateEvent(eventId, newEventName, newDate, newCategory, newAddress, newNotes);
             renderEvents();
+            alert("Event updated.")
+        });
+    });
+
+    // Delete button event listener
+    const deleteBtns = document.querySelectorAll(".delBtn");
+    deleteBtns.forEach(function (btn) {
+        console.log("clicked.") // check functionality, del later
+        btn.addEventListener("click", function () {
+            const eventId = parseInt(btn.getAttribute("data-id"));
+            const reallyDelete = confirm("Are you sure you want to delete?");
+            if (reallyDelete) {
+                deleteEvent(plannerList, eventId);
+                renderEvents();
+                alert("Event deleted.")
+            }
         });
     });
 }
@@ -192,17 +205,3 @@ function deleteEvent(id) {
         plannerList.splice(indexToDel, 1);
     }
 }
-
-console.log(plannerList)
-
-
-// MARK: calendar pg
-
-
-
-
-
-
-
-
-

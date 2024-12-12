@@ -97,7 +97,9 @@ h3,
   padding: 8px 12px;
 }
 
-
+.finished-event {
+  opacity: 0.5; /* Make the event half-transparent */
+}
 
 /* MARK: calendar pg */
 #actModal {
@@ -140,10 +142,6 @@ td:hover {
   margin-right: 2rem;
 }
 
-/* MARK: new-event modal */
-
-
-
 /* MARK: forms */
 label {
   margin: 12px 0;
@@ -166,21 +164,44 @@ input[type="checkbox"] {
 
 
 
+/*  MARK: calendar */
+.tooltip {
+  visibility: hidden;
+  background-color: var(--bs-primary);
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
 
+.event-day:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
 
-/*  MARK: this-month */
+/* Event day background color */
+.event-day {
+  background-color: var(--bs-neutral-light) !important;
+  font-weight: bold;
+}
 
-
-
-
-
-
-
+#calendarBody td {
+  text-align: center;
+  padding: 10px;
+  position: relative;
+}
 
 /* MARK: map */
 #map {
   height: 100vh;
-  width: auto;
+  width: 100%;
   z-index: 1;
 }
 
