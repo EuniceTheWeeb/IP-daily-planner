@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "event name": "Xmas dinner",
+        "eventName": "Xmas dinner",
         "date": "2024-12-19",
         "category": "Leisure",
         "address": "Bugis+, 201 Victoria Street, #04-10 Singapore 188067",
@@ -9,7 +9,7 @@
     },
     {
         "id": 2,
-        "event name": "Filming for CNY Event",
+        "eventName": "Filming for CNY Event",
         "date": "2024-12-16",
         "category": "Work",
         "address": "5 Raffles Place, Raffles Place MRT Station (NS26/EW14), Singapore 048618",
@@ -17,28 +17,10 @@
     },
     {
         "id": 3,
-        "event name": "Medical Checkup @ Tampines",
+        "eventName": "Medical Checkup @ Tampines",
         "date": "2025-01-07",
         "category": "Appointment",
         "address": "1 Tampines Street 41 Singapore 529203",
         "notes": "Fast for 8hr before 11am"
-    },
+    }
 ]
-
-{
-    "id": 4,
-    "event name": "Sonic the Hedgehog 3 release",
-    "date": "2024-12-26",
-    "category": "Leisure",
-    "address": "68 Orchard Rd, Singapore 238839",
-    "notes": ""
-},
-
-{
-    "id": 5,
-    "event name": "Madoka 4 release",
-    "date": "2024-12-27",
-    "category": "Leisure",
-    "address": "68 Orchard Rd, Singapore 238839",
-    "notes": "it got postponed 😭, reschedule later"
-},

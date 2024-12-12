@@ -90,12 +90,49 @@ h3,
   padding: 1rem;
 }
 
-#delBtn, #editBtn, #saveBtn {
+.delBtn, .saveBtn {
   font-size: 16px;
   padding: 8px 12px;
 }
 
+/* styles.css */
 
+/* popup styling */
+#popupContainer {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+}
+
+.popup {
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+  position: relative;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  font-size: 16px;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.popup.success {
+  background-color: green;
+}
+
+.popup.error {
+  background-color: red;
+}
+
+/* Additional styles for popup container (if needed) */
+.popupContainer {
+  max-width: 300px;
+}
 
 /* MARK: calendar pg */
 #actModal {
@@ -179,12 +216,13 @@ input[type="checkbox"] {
 #map {
   height: 100vh;
   width: auto;
+  z-index: 1;
 }
 
 /* MARK: media query */
 @media (min-width: 900px) {
   body {
-    padding-top: 6rem;
+    padding-top: 5.25rem;
   }
 
   .btn-primary {

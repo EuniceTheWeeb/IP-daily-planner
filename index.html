@@ -28,8 +28,8 @@
                         <a class="nav-link" href="this-month.html">Calendar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#actModal">New Event</a>
-                    </li>
+                        <a class="nav-link newEventBtn" data-bs-toggle="modal" data-bs-target="#actModal">New Event</a>
+                      </li>
                     <li class="nav-item">
                         <a class="nav-link" href="map.html">Map</a>
                     </li>
@@ -38,46 +38,19 @@
         </div>
     </nav>
 
+    <div class="col-12 d-flex justify-content-center align-items-center">
+        <button type="button" class="btn btn-primary btn-lg newEventBtn" data-bs-toggle="modal" data-bs-target="#actModal">
+          Add New Event
+        </button>
+      </div>
+
     <div class="container my-4">
         <div class="d-flex justify-content-center align-items-center">
             <h4 class="monthYear"></h4>
             <button class="btn btn-secondary prev">Prev</button>
             <button class="btn btn-secondary next">Next</button>
         </div>
-
-        <div class="d-flex overflow-auto allDates">
-            <!-- MARK: event card -->
-            <div class="col-8 col-md-4 dateCard">
-                <div class="card">
-                    <div class="card-header headerInfo d-flex justify-content-center" id="eventDate">
-                        <h3>Date</h3>
-                        <button type="button" class="btn btn-danger" id="delBtn">Delete</button>
-                    </div>
-                    <div class="card-body">
-                        <label>Name</label>
-                        <textarea class="form-control" rows="1" id="activityName"></textarea>
-                        <label>Category</label>
-                        <select name="category" id="category" class="form-control">
-                            <option value="Shopping">Shopping</option>
-                            <option value="Appointment">Appointment</option>
-                            <option value="Leisure">Leisure</option>
-                            <option value="Work">Work</option>
-                            <option value="School">School</option>
-                            <option value="Misc">Misc</option>
-                        </select>
-
-                        <label>Address</label>
-                        <textarea class="form-control" rows="3" id="activityAddress"></textarea>
-
-                        <label>Notes</label>
-                        <textarea class="form-control" rows="3" id="activityNotes"></textarea>
-                    </div>
-                    <div class="card-footer">
-                        <button type="button" class="btn btn-primary" id="editBtn">Edit</button>
-                        <button type="button" class="btn btn-secondary" id="saveBtn">Save</button>
-                    </div>
-                </div>
-            </div>
+        <div class="d-flex overflow-auto allEvents">
         </div>
     </div>
 

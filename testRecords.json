@@ -1,0 +1,18 @@
+[
+    {
+        "id": 4,
+        "eventName": "Medical Checkup @ Tampines",
+        "date": "2025-01-07",
+        "category": "Appointment",
+        "address": "1 Tampines Street 41 Singapore 529203",
+        "notes": "Fast for 8hr before 11am"
+    },
+    {
+        "id": 5,
+        "eventName": "Sonic the Hedgehog 3 release",
+        "date": "2024-12-26",
+        "category": "Leisure",
+        "address": "68 Orchard Rd, Singapore 238839",
+        "notes": ""
+    },
+]
