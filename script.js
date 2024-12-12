@@ -68,6 +68,10 @@ function addEvent(plannerList, eventName, eventDate, eventCat, eventAddress, eve
 
 // MARK: read
 function renderEvents() {
+    plannerList.sort(function(a, b) {
+        return new Date(a.date) - new Date(b.date); 
+    });
+
     let allEvents = document.querySelector(".allEvents");
     allEvents.innerHTML = "";
 
@@ -86,7 +90,6 @@ function renderEvents() {
                         
                         <label>Category</label>
                         <select name="category" class="category form-control">
-                            <option value="Shopping" ${plan.category === "Shopping" ? "selected" : ""}>Shopping</option>
                             <option value="Appointment" ${plan.category === "Appointment" ? "selected" : ""}>Appointment</option>
                             <option value="Leisure" ${plan.category === "Leisure" ? "selected" : ""}>Leisure</option>
                             <option value="Work" ${plan.category === "Work" ? "selected" : ""}>Work</option>
@@ -113,14 +116,22 @@ function renderEvents() {
     attachEventListeners();
 }
 
-// Attach event listeners to Save and Delete buttons
+// MARK: set up save, del, go to map btns
 function attachEventListeners() {
+    
+    // Go to map event listener
+    const goToMapBtns = document.querySelectorAll(".goToMapBtn");
+    goToMapBtns.forEach(function (btn) {
+        btn.addEventListener("click", function() {
+            window.location.href = "map.html";
+        });
+    });
 
     // Delete button event listener
     const deleteBtns = document.querySelectorAll(".delBtn");
-    deleteBtns.forEach(function(btn) {
+    deleteBtns.forEach(function (btn) {
         console.log("clicked.") // check functionality, del later
-        btn.addEventListener("click", function() {
+        btn.addEventListener("click", function () {
             const eventId = parseInt(btn.getAttribute("data-id"));
             const reallyDelete = confirm("Are you sure you want to delete?");
             if (reallyDelete) {
@@ -132,13 +143,13 @@ function attachEventListeners() {
 
     // Save button event listener
     const saveBtns = document.querySelectorAll(".saveBtn");
-    saveBtns.forEach(function(btn) {
-        btn.addEventListener("click", function() {
+    saveBtns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
             console.log("clicked.") // check functionality, del later
 
             const eventId = parseInt(btn.getAttribute("data-id"));
             const eventCard = btn.closest(".card");
-            
+
             const newEventName = eventCard.querySelector(".eventName").value;
             const newCategory = eventCard.querySelector(".category").value;
             const newAddress = eventCard.querySelector(".eventAddress").value;
@@ -182,8 +193,7 @@ function deleteEvent(id) {
     }
 }
 
-
-
+console.log(plannerList)
 
 
 // MARK: calendar pg
@@ -191,12 +201,6 @@ function deleteEvent(id) {
 
 
 
-
-
-// MARK: new event modal
-
-
-// MARK: 
 
 
 

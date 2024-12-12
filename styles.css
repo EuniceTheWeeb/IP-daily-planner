@@ -76,17 +76,19 @@ h3,
 
 /* MARK: index */
 .card {
-  max-width: 100%;
-  border-color: var(--bs-primary);
+  border-color: white;
+  padding: 1rem;
 }
 
 .card-header {
   background-color: var(--bs-neutral-light);
+  border-color: var(--bs-primary);
   padding: 1rem;
 }
 
 .card-body, .card-footer {
   background-color: var(--bs-accent);
+  border-color: var(--bs-primary);
   padding: 1rem;
 }
 
@@ -95,44 +97,7 @@ h3,
   padding: 8px 12px;
 }
 
-/* styles.css */
 
-/* popup styling */
-#popupContainer {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 9999;
-}
-
-.popup {
-  transition: opacity 0.5s ease-in-out;
-  opacity: 1;
-  position: relative;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 9999;
-  font-size: 16px;
-  border-radius: 5px;
-  padding: 10px 20px;
-  margin: 10px 0;
-  text-align: center;
-}
-
-.popup.success {
-  background-color: green;
-}
-
-.popup.error {
-  background-color: red;
-}
-
-/* Additional styles for popup container (if needed) */
-.popupContainer {
-  max-width: 300px;
-}
 
 /* MARK: calendar pg */
 #actModal {
