@@ -1,29 +1,17 @@
-let plannerList = [
-    {
-        "id": 1,
-        "eventName": "HSR 2.7 Livestream",
-        "date": "2024-11-22",
-        "category": "Leisure",
-        "address": "",
-        "notes": ""
-    },
-    {
-        "id": 2,
-        "eventName": "Xmas dinner",
-        "date": "2024-12-19",
-        "category": "Leisure",
-        "address": "Bugis+, 201 Victoria Street, #04-10 Singapore 188067",
-        "notes": ""
-    },
-    {
-        "id": 3,
-        "eventName": "Filming for CNY Event",
-        "date": "2024-12-16",
-        "category": "Work",
-        "address": "5 Raffles Place, Raffles Place MRT Station (NS26/EW14), Singapore 048618",
-        "notes": "Need to clear camera storage, checklist for what to bring"
-    },
-]
+const JSON_BIN_BASE_URL="https://api.jsonbin.io/v3";
+const JSON_BIN_ID = "675b4caee41b4d34e4646c0a";   
+
+async function loadList() {
+  const response = await axios.get(`${JSON_BIN_BASE_URL}/b/${JSON_BIN_ID}/latest`);
+  return response.data.record;
+}
+
+async function saveList(plannerList) {
+  const response = await axios.put(`${JSON_BIN_BASE_URL}/b/${JSON_BIN_ID}`, plannerList)
+  console.log(response.data)
+}
+
+let plannerList = []
 
 function resetModalFields() {
     document.querySelector("#eventName").value = "";
@@ -34,8 +22,10 @@ function resetModalFields() {
 }
 
 // MARK: home pg
-window.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("DOMContentLoaded", async function () {
+    plannerList = await loadList()
     renderEvents();
+    updateCalendar();
 
     let newEventBtn = document.querySelectorAll(".newEventBtn");
     newEventBtn.forEach(function (btn) {
@@ -53,8 +43,8 @@ window.addEventListener("DOMContentLoaded", function () {
             const modal = bootstrap.Modal.getInstance(document.querySelector("#eventModal"));
             modal.hide();
 
+            saveList (plannerList);
             renderEvents();
-
         });
     });
 });
@@ -71,7 +61,6 @@ function addEvent(plannerList, eventName, eventDate, eventCat, eventAddress, eve
     };
     console.log("New Event Added:", newEvent);
     plannerList.push(newEvent);
-    renderEvents();
 }
 
 // MARK: read
@@ -88,7 +77,7 @@ function renderEvents() {
         const isPastEvent = new Date(plan.date) < new Date(todayDate);
 
         const html = `
-            <div class="col-8 col-md-4">
+            <div class="col-10 col-md-8 col-lg-4">
                 <div class="card ${isPastEvent ? "finished-event" : ""}">
                     <div class="card-header headerInfo d-flex justify-content-center">
                         <h3 class="eventDate">${plan.date}</h3>
@@ -109,8 +98,8 @@ function renderEvents() {
                         </select>
 
                         <label>Address</label>
-                        <textarea class="form-control eventAddress" rows="3">${plan.address}</textarea>
-                        <button type="button" class="btn btn-secondary goToMapBtn">Go to Map</button>
+                        <textarea class="form-control eventAddress" rows="2">${plan.address}</textarea>
+                        <button type="button" class="btn btn-secondary goToMapBtn">Go to Map</button><br>
 
                         <label>Notes</label>
                         <textarea class="form-control eventNotes" rows="3">${plan.notes}</textarea>
@@ -142,7 +131,6 @@ function attachEventListeners() {
     const saveBtns = document.querySelectorAll(".saveBtn");
     saveBtns.forEach(function (btn) {
         btn.addEventListener("click", function () {
-            console.log("clicked.") // check functionality, del later
 
             const eventId = parseInt(btn.getAttribute("data-id"));
             const eventCard = btn.closest(".card");
@@ -154,20 +142,21 @@ function attachEventListeners() {
             const newNotes = eventCard.querySelector(".eventNotes").value;
 
             updateEvent(eventId, newEventName, newDate, newCategory, newAddress, newNotes);
+            saveList (plannerList);
             renderEvents();
-            alert("Event updated.")
+            alert("Event updated.");
         });
     });
 
     // Delete button event listener
     const deleteBtns = document.querySelectorAll(".delBtn");
     deleteBtns.forEach(function (btn) {
-        console.log("clicked.") // check functionality, del later
         btn.addEventListener("click", function () {
             const eventId = parseInt(btn.getAttribute("data-id"));
             const reallyDelete = confirm("Are you sure you want to delete?");
             if (reallyDelete) {
                 deleteEvent(plannerList, eventId);
+                saveList (plannerList);
                 renderEvents();
                 alert("Event deleted.")
             }

@@ -40,10 +40,6 @@ button {
   transition: 400ms;
 }
 
-.btn {
-  
-}
-
 .btn-primary {
   background-color: var(--bs-primary) !important;
   border-color: var(--bs-primary) !important;
@@ -78,6 +74,7 @@ h3,
 .card {
   border-color: white;
   padding: 1rem;
+  position: relative;
 }
 
 .card-header {
@@ -97,14 +94,19 @@ h3,
   padding: 8px 12px;
 }
 
+.goToMapBtn {
+  margin: 1.5rem 0;
+}
+
 .finished-event {
-  opacity: 0.5; /* Make the event half-transparent */
+  opacity: 0.5;
 }
 
 /* MARK: calendar pg */
-#actModal {
+.webpgNewEvent {
   font-weight: bold;
-  margin: 2rem auto;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 table {
@@ -141,6 +143,8 @@ td:hover {
 .next {
   margin-right: 2rem;
 }
+
+
 
 /* MARK: forms */
 label {
