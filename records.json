@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "event name": "Xmas dinner",
+        "date": "2024-12-20",
+        "category": "Leisure",
+        "address": "Bugis+, 201 Victoria Street, #04-10 Singapore 188067",
+        "notes": ""
+    },
+    {
+        "id": 2,
+        "event name": "",
+        "date": "",
+        "category": "",
+        "address": "",
+        "notes": ""
+    },
+    {
+        "id": 3,
+        "event name": "",
+        "date": "",
+        "category": "",
+        "address": "",
+        "notes": ""
+    },
+]
