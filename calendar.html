@@ -27,9 +27,6 @@
             <a class="nav-link active" href="calendar.html">Calendar</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link newEventBtn" data-bs-toggle="modal" data-bs-target=".eventModal">New Event</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="map.html">Map</a>
           </li>
         </ul>
@@ -38,76 +35,16 @@
   </nav>
 
   <div class="col-12 d-flex justify-content-center align-items-center">
-    <button type="button" class="btn btn-primary btn-lg newEventBtn webpgNewEvent" data-bs-toggle="modal"
-      data-bs-target=".eventModal">
-      Add New Event
+    <button type="button" class="btn btn-primary btn-lg webpgNewEvent" id="thisMthEvents">Check This Month's Events</button>
     </button>
   </div>
-
-  <!-- Modal for Adding New Event -->
-  <div class="modal fade eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title eventModalLabel">Add New Event</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <!-- Event form fields -->
-                <form id="eventForm">
-                    <div class="row mb-3">
-                        <label for="eventName" class="col-sm-3 col-form-label">Event Name</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" class="eventName" placeholder="Event name"
-                                required>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="eventDate" class="col-sm-3 col-form-label">Date</label>
-                        <div class="col-sm-9">
-                            <input type="date" class="form-control" class="eventDate" required>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="eventCategory" class="col-sm-3 col-form-label">Category</label>
-                        <div class="col-sm-9">
-                            <select class="eventCategory" class="form-control" required>
-                                <option value="" disabled selected>Select category</option>
-                                <option value="Appointment">Appointment</option>
-                                <option value="Leisure">Leisure</option>
-                                <option value="Work">Work</option>
-                                <option value="School">School</option>
-                                <option value="Misc">Misc</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="eventAddress" class="form-label">Address</label>
-                        <textarea class="form-control" class="eventAddress" rows="3"
-                            placeholder="Event address (optional)"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="eventNotes" class="form-label">Notes</label>
-                        <textarea class="form-control" class="eventNotes" rows="3"
-                            placeholder="Event notes (optional)"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="saveEventBtn">Save Event</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 
   <!-- MARK: calendar -->
   <div class="container">
     <div class="d-flex justify-content-center align-items-center">
       <h4 class="monthYear"></h4>
-      <button class="btn btn-secondary prev">Prev</button>
-      <button class="btn btn-secondary next">Next</button>
+      <button class="btn btn-secondary" id="prev">Prev</button>
+      <button class="btn btn-secondary" id="next">Next</button>
     </div>
 
     <div class="col-12 d-flex justify-content-center align-items-center">
@@ -137,6 +74,7 @@
     integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+  <script src="data.js"></script>
   <script src="script.js"></script>
   <script src="calendar.js"></script>
 </body>

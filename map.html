@@ -31,91 +31,20 @@
             <a class="nav-link" href="calendar.html">Calendar</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="modal" data-bs-target=".eventModal">New Event</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link active" href="map.html">Map</a>
           </li>
         </ul>
       </div>
-      <!-- <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-          data-bs-toggle="dropdown" aria-expanded="false">
-          Filter
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="#" title="Show this month">Show This Month</a></li>
-          <li><a class="dropdown-item" href="#" title="Show today">Show Today</a></li>
-          <li><a class="dropdown-item" href="#" title="Show all">Show All</a></li>
-          </li>
-        </ul>
-      </div> -->
     </div>
   </nav>
 
-    <!-- Modal for Adding New Event -->
-  <div class="modal fade eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title eventModalLabel">Add New Event</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <!-- Event form fields -->
-                <form id="eventForm">
-                    <div class="row mb-3">
-                        <label for="eventName" class="col-sm-3 col-form-label">Event Name</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" class="eventName" placeholder="Event name"
-                                required>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="eventDate" class="col-sm-3 col-form-label">Date</label>
-                        <div class="col-sm-9">
-                            <input type="date" class="form-control" class="eventDate" required>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="eventCategory" class="col-sm-3 col-form-label">Category</label>
-                        <div class="col-sm-9">
-                            <select class="eventCategory" class="form-control" required>
-                                <option value="" disabled selected>Select category</option>
-                                <option value="Appointment">Appointment</option>
-                                <option value="Leisure">Leisure</option>
-                                <option value="Work">Work</option>
-                                <option value="School">School</option>
-                                <option value="Misc">Misc</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="eventAddress" class="form-label">Address</label>
-                        <textarea class="form-control" class="eventAddress" rows="3"
-                            placeholder="Event address (optional)"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="eventNotes" class="form-label">Notes</label>
-                        <textarea class="form-control" class="eventNotes" rows="3"
-                            placeholder="Event notes (optional)"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="saveEventBtn">Save Event</button>
-            </div>
-        </div>
-    </div>
-</div>
-
   <div id="map"></div>
 
-
   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+  <script src="data.js"></script>
   <script src="script.js"></script>
   <script src="map.js"></script>
+  
   <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
   <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"

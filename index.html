@@ -28,10 +28,6 @@
                         <a class="nav-link" href="calendar.html">Calendar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link newEventBtn" data-bs-toggle="modal" data-bs-target=".eventModal">New
-                            Event</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="map.html">Map</a>
                     </li>
                 </ul>
@@ -43,12 +39,20 @@
     <!-- MARK: Modal -->
     <div class="col-12 d-flex justify-content-center align-items-center">
         <button type="button" class="btn btn-primary btn-lg newEventBtn webpgNewEvent" data-bs-toggle="modal"
-            data-bs-target=".eventModal">
+            data-bs-target="#eventModal">
             Add New Event
         </button>
     </div>
 
-    <div class="modal fade eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
+    <!-- Modal for alerts -->
+    <div id="alertModal" class="modal">
+        <div class="modal-content alert">
+            <p id="alertMessage">Event created!</p>
+        </div>
+    </div>
+
+
+    <div class="modal fade" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true" id="eventModal">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -61,20 +65,20 @@
                         <div class="row mb-3">
                             <label for="eventName" class="col-sm-3 col-form-label">Event Name</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" class="eventName" placeholder="Event name"
+                                <input type="text" class="form-control" id="eventName" placeholder="Event name"
                                     required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="eventDate" class="col-sm-3 col-form-label">Date</label>
                             <div class="col-sm-9">
-                                <input type="date" class="form-control" class="eventDate" required>
+                                <input type="date" class="form-control" id="eventDate" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="eventCategory" class="col-sm-3 col-form-label">Category</label>
                             <div class="col-sm-9">
-                                <select class="eventCategory" class="form-control" required>
+                                <select id="eventCategory" class="form-control" required>
                                     <option value="" disabled selected>Select category</option>
                                     <option value="Appointment">Appointment</option>
                                     <option value="Leisure">Leisure</option>
@@ -86,12 +90,12 @@
                         </div>
                         <div class="mb-3">
                             <label for="eventAddress" class="form-label">Address</label>
-                            <textarea class="form-control" class="eventAddress" rows="3"
+                            <textarea class="form-control" id="eventAddress" rows="3"
                                 placeholder="Event address (optional)"></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="eventNotes" class="form-label">Notes</label>
-                            <textarea class="form-control" class="eventNotes" rows="3"
+                            <textarea class="form-control" id="eventNotes" rows="3"
                                 placeholder="Event notes (optional)"></textarea>
                         </div>
                     </form>
@@ -103,6 +107,15 @@
             </div>
         </div>
     </div>
+
+    <div class="container">
+        <div class="d-flex justify-content-center align-items-center">
+            <h4 class="monthYear"></h4>
+            <button class="btn btn-secondary" id="prevEvents">Prev</button>
+            <button class="btn btn-secondary" id="nextEvents">Next</button>
+        </div>
+    </div>
+
 
     <div class="container my-4">
         <div class="d-flex overflow-auto allEvents">
@@ -117,6 +130,7 @@
         integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+        <script src="data.js"></script>
     <script src="script.js"></script>
     <script src="map.js"></script>
     <script src="calendar.js"></script>

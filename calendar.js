@@ -1,4 +1,6 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
+    // load events into calendar
+    plannerList = await loadList();
 
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     let date = new Date();
@@ -6,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let year = date.getFullYear();
     let monthName = months[month];
 
-    // Function to update calendar content (render structure)
+    // Update calendar based on mth & yr 
     function updateCalendar() {
         document.querySelector(".monthYear").innerHTML = monthName + " " + year;
 
@@ -49,25 +51,25 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     updateCalendar();
 
-    // Prev & next mth
+    // MARK: Prev & next mth
     // retrieve data from today's date, assign to variables & updates using the btn
-    document.querySelector(".prev").addEventListener("click", function () {
-        date.setMonth(date.getMonth() - 1);
+    document.querySelector("#prev").addEventListener("click", function () {
+        date.setMonth(month - 1);
         month = date.getMonth();
         year = date.getFullYear();
         monthName = months[month];
         updateCalendar();
     });
 
-    document.querySelector(".next").addEventListener("click", function () {
-        date.setMonth(date.getMonth() + 1);
+    document.querySelector("#next").addEventListener("click", function () {
+        date.setMonth(month + 1);
         month = date.getMonth();
         year = date.getFullYear();
         monthName = months[month];
         updateCalendar();
     });
 
-    // Add CSS to events and tooltips
+    // MARK: Add events & tooltips to calendar
     function addEventAndTooltip(dayTd, day, month, year) {
         const eventForDay = getEventForDay(day, month, year);
         if (eventForDay) {
@@ -88,3 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+document.querySelector("#thisMthEvents").addEventListener ("click", function() {
+    window.location.href = "index.html";
+})
