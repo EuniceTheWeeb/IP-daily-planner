@@ -18,12 +18,5 @@ document.addEventListener("DOMContentLoaded", function () {
 `);
 
 
-
-    // Function to geocode the address and add a marker
-    document.querySelectorAll('.goToMapBtn').forEach(function (btn) {
-        if (document.querySelectorAll('.eventAddress').value.length < 10) {
-            btn.classList.add("disabled");
-        }
-    })
 });
 

@@ -147,7 +147,8 @@ h3,
 
 table {
   margin: 1rem auto;
-  width: 70%;
+  table-layout: fixed;
+  width: 100%;
 }
 
 td,
@@ -211,6 +212,7 @@ input[type="checkbox"] {
   text-align: center;
   border-radius: 5px;
   padding: 5px;
+  word-wrap: break-word;
   position: absolute;
   z-index: 1;
   bottom: 100%;
@@ -231,23 +233,30 @@ input[type="checkbox"] {
   font-weight: bold;
 }
 
-#calendarBody td {
+td {
   text-align: center;
   padding: 10px;
   position: relative;
+  width: 100px;
+  box-sizing: border-box;
 }
 
 /* MARK: map */
 #map {
-  height: 100vh;
+  height: 95vh;
   width: 100%;
   z-index: 1;
+}
+
+.leaflet-control-zoom {
+  top: 2rem;
+  left: 1rem;
 }
 
 /* MARK: media query */
 @media (min-width: 768px) {
   body {
-    padding-top: 5.25rem;
+    padding-top: 5.5rem;
   }
 
   .btn-primary {
