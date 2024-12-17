@@ -1,13 +1,5 @@
 [
     {
-        "id": 2,
-        "eventName": "Xmas dinner",
-        "date": "2024-12-19",
-        "category": "Leisure",
-        "address": "Bugis+, 201 Victoria Street, #04-10 Singapore 188067",
-        "notes": ""
-    },
-    {
         "id": 4,
         "eventName": "Medical Checkup @ Tampines",
         "date": "2025-01-07",
@@ -22,5 +14,5 @@
         "category": "Leisure",
         "address": "68 Orchard Rd, Singapore 238839",
         "notes": ""
-    },
+    }
 ]

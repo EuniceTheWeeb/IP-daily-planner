@@ -1,5 +1,5 @@
 const JSON_BIN_BASE_URL = "https://api.jsonbin.io/v3";
-const JSON_BIN_ID = "675b4caee41b4d34e4646c0a";
+const JSON_BIN_ID = "676192c8ad19ca34f8dcb5fd";
 
 async function loadList() {
     const response = await axios.get(`${JSON_BIN_BASE_URL}/b/${JSON_BIN_ID}/latest`);
@@ -11,12 +11,13 @@ async function saveList(plannerList) {
     console.log(response.data)
 }
 
+// clear event modal fields
 function resetModalFields() {
-    document.querySelector("#eventName").value = "";
-    document.querySelector("#eventDate").value = "";
-    document.querySelector("#eventCategory").value = "";
-    document.querySelector("#eventAddress").value = "";
-    document.querySelector("#eventNotes").value = "";
+    document.querySelector("#newEventName").value = "";
+    document.querySelector("#newEventDate").value = "";
+    document.querySelector("#newEventCategory").value = "";
+    document.querySelector("#newEventAddress").value = "";
+    document.querySelector("#newEventNotes").value = "";
 }
 
 // MARK: Alert popup function
@@ -70,7 +71,7 @@ function addEvent(plannerList, eventName, eventDate, eventCat, eventAddress, eve
 function renderEvents() {
 
     // Filter events for the current month and year
-    let filterEvents = plannerList.filter(function(plan) {
+    let filterEvents = plannerList.filter(function (plan) {
         const eventDate = new Date(plan.date);
         return eventDate.getMonth() === month && eventDate.getFullYear() === year;
     });
@@ -90,11 +91,10 @@ function renderEvents() {
         const isPastEvent = new Date(plan.date) < new Date(todayDate);
 
         const html = `
-            <div class="col-10 col-md-8 col-lg-4">
+            <div class="col-10 col-md-8 col-lg-6">
                 <div class="card ${isPastEvent ? "finished-event" : ""}">
                     <div class="card-header headerInfo d-flex justify-content-center">
-                        <h3 class="eventDate">${plan.date}</h3>
-                        <button type="button" class="btn btn-danger delBtn" data-id="${plan.id}">Delete</button>
+                        <input type="date" class="eventDate" value="${plan.date}">
                     </div>
                     <div class="card-body">
                         <label>Name</label>
@@ -113,8 +113,9 @@ function renderEvents() {
                         <label>Notes</label>
                         <textarea class="form-control eventNotes" rows="3">${plan.notes}</textarea>
                     </div>
-                    <div class="card-footer">
-                        <button type="button" class="btn btn-secondary saveBtn" data-id="${plan.id}">Save</button>
+                    <div class="card-footer d-flex">
+                    <button type="button" class="btn btn-danger delBtn" data-id="${plan.id}">Delete</button>
+                        <button type="button" class="btn btn-secondary saveBtn ms-auto" data-id="${plan.id}">Save</button>
                     </div>
                 </div>
             </div>
@@ -123,7 +124,6 @@ function renderEvents() {
     }
     attachEventListeners();
 }
-
 
 // MARK: Update function
 function updateEvent(id, newEventName, newDate, newCategory, newAddress, newNotes) {

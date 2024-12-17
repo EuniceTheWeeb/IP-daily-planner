@@ -61,16 +61,8 @@ button {
   border-color: var(--bs-neutral-dark) !important;
 }
 
-/* Accent text */
-h1,
-h2,
-h3,
-.highlight-text {
-  color: var(--bs-neutral-dark);
-  margin: 1rem;
-}
-
 /* MARK: index */
+/* event card */
 .card {
   border-color: white;
   padding: 1rem;
@@ -83,13 +75,15 @@ h3,
   padding: 1rem;
 }
 
-.card-body, .card-footer {
+.card-body,
+.card-footer {
   background-color: var(--bs-accent);
   border-color: var(--bs-primary);
   padding: 1rem;
 }
 
-.delBtn, .saveBtn {
+.delBtn,
+.saveBtn {
   font-size: 16px;
   padding: 8px 12px;
 }
@@ -97,6 +91,7 @@ h3,
 .goToMapBtn {
   margin: 1.5rem 0;
 }
+
 .disabled {
   opacity: 0.6;
   background-color: var(--bs-neutral-dark);
@@ -106,7 +101,7 @@ h3,
   opacity: 0.5;
 }
 
-/* The modal (background overlay) */
+/* Alert modal */
 #alertModal {
   display: none;
   position: fixed;
@@ -119,7 +114,6 @@ h3,
   top: 0;
 }
 
-/* Modal content (alert box) */
 .alert {
   background-color: var(--bs-accent);
   padding: 20px;
@@ -137,8 +131,7 @@ h3,
   margin: 10px 0;
 }
 
-
-/* MARK: calendar pg */
+/* MARK: calendar table */
 .webpgNewEvent {
   font-weight: bold;
   margin-top: 3rem;
@@ -166,8 +159,11 @@ td:hover {
 }
 
 .monthYear {
+  color: var(--bs-neutral-dark);
+  margin: 1rem;
   margin-left: 2rem;
   width: 15rem;
+  font-size: 24px;
 }
 
 #prev,
@@ -184,27 +180,7 @@ td:hover {
   margin-right: 1rem;
 }
 
-/* MARK: forms */
-label {
-  margin: 12px 0;
-  margin-right: 8px;
-}
-
-input {
-  margin: .5rem;
-  cursor: pointer;
-}
-
-input[type="text"] {
-  width: 10rem;
-}
-
-input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
-}
-
-/*  MARK: calendar */
+/*  MARK: calendar events */
 .tooltip {
   visibility: hidden;
   background-color: var(--bs-primary);
@@ -241,6 +217,30 @@ td {
   box-sizing: border-box;
 }
 
+/* MARK: forms */
+label {
+  margin: 12px 0;
+  margin-right: 8px;
+}
+
+input {
+  margin: .5rem;
+  cursor: pointer;
+}
+
+input[type="text"] {
+  width: 10rem;
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}
+
+input[type="date"] {
+  font-size: 32px;
+}
+
 /* MARK: map */
 #map {
   height: 95vh;
@@ -274,6 +274,7 @@ td {
   .monthYear {
     font-size: 28px;
     margin-left: 5rem;
+    width: 15rem;
   }
 
   td,
@@ -298,7 +299,7 @@ td {
   }
 
   #next,
-  #nextEvents  {
+  #nextEvents {
     margin-right: 2.5rem;
   }
 
@@ -307,7 +308,7 @@ td {
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 992px) { 
   .btn-primary {
     font-size: 32px;
   }
@@ -317,8 +318,8 @@ td {
   }
 
   .monthYear {
-    margin-left: 5rem;
-    font-size: 32px;
+    font-size: 36px;
+    width: 20rem;
   }
 
   td,

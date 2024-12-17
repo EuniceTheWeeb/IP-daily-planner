@@ -8,11 +8,11 @@ window.addEventListener("DOMContentLoaded", async function () {
     // create new event btn
     let saveEventBtn = document.querySelector("#saveEventBtn");
     saveEventBtn.addEventListener("click", function () {
-        let eventName = document.querySelector("#eventName").value;
-        let eventDate = document.querySelector("#eventDate").value;
-        let eventCat = document.querySelector("#eventCategory").value;
-        let eventAddress = document.querySelector("#eventAddress").value;
-        let eventNotes = document.querySelector("#eventNotes").value;
+        let eventName = document.querySelector("#newEventName").value;
+        let eventDate = document.querySelector("#newEventDate").value;
+        let eventCat = document.querySelector("#newEventCategory").value;
+        let eventAddress = document.querySelector("#newEventAddress").value;
+        let eventNotes = document.querySelector("#newEventNotes").value;
 
         addEvent(plannerList, eventName, eventDate, eventCat, eventAddress, eventNotes);
         saveList(plannerList);
@@ -21,7 +21,6 @@ window.addEventListener("DOMContentLoaded", async function () {
         window.location.href = "index.html";
     });
 });
-
 
 // MARK: set up save, del, go to map btns
 function attachEventListeners() {
@@ -42,7 +41,7 @@ function attachEventListeners() {
             const eventCard = btn.closest(".card");
 
             const newEventName = eventCard.querySelector(".eventName").value;
-            const newDate = eventCard.querySelector(".eventDate").innerText;
+            const newDate = eventCard.querySelector(".eventDate").value;
             const newCategory = eventCard.querySelector(".category").value;
             const newAddress = eventCard.querySelector(".eventAddress").value;
             const newNotes = eventCard.querySelector(".eventNotes").value;

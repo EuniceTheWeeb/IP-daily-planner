@@ -8,6 +8,14 @@
         "notes": ""
     },
     {
+        "id": 2,
+        "eventName": "Xmas dinner",
+        "date": "2024-12-19",
+        "category": "Leisure",
+        "address": "Bugis+, 201 Victoria Street, #04-10 Singapore 188067",
+        "notes": ""
+    },
+    {
         "id": 3,
         "eventName": "Filming for CNY Event",
         "date": "2024-12-16",
